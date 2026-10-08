@@ -3,8 +3,8 @@
 Path: [docs](../README.md) › [enclosures](README.md) › **100w-masterbox**
 Parent: [README.md](README.md)
 **Code:** `enclosures/100W-masterbox/enclosure.yaml`
-**Covers:** the bed-filling S-100-5 enclosure for an ESP32 driving 8 MAX485 RS485 transmitters,
-with three RJ45 outputs and four LED exits.
+**Covers:** the bed-filling S-100-5 enclosure for an ESP32 driving 6 MAX485 RS485 transmitters,
+two per RJ45 output, with three RJ45 outputs and four LED exits.
 
 ## What it does
 
@@ -14,7 +14,7 @@ terminals to the left; low-voltage wires go through printed loops in a 10 mm fro
 round the PSU's right end, as in [100w.md](100w.md). Behind the PSU:
 
 - **C14** lying down in the left wall, directly behind the PSU's L/N/FG terminals.
-- **MAX485 board** (8 modules), long side along the box, 30 mm free on both long sides for the
+- **MAX485 board** (6 modules), long side along the box, 30 mm free on both long sides for the
   modules that overhang them. Two RJ45s in the back wall inside its rear strip.
 - **ESP32 board** beside it, 30 mm free behind its long side for the USB-C debug cable; the third
   RJ45 in the back wall behind that.
@@ -26,10 +26,13 @@ Slide-lock lid, zip-tie lug on the front wall, four countersunk floor screws.
 
 - **What the boards hold sets their clearance** (owner, 2026-10-08): the MAX485 modules are long
   and overhang both long sides of their board — 3 cm each side is enough; the ESP32 needs room on
-  one long side for a USB-C cable. Each RJ45 carries RS485 outputs (data pairs and a ground pair)
-  from the MAX485s, so the RJ45s sit at the MAX485 board's rear strip.
+  one long side for a USB-C cable. Each RJ45 carries the RS485 outputs of two MAX485s (two data
+  pairs and a ground pair), so the RJ45s sit at the MAX485 board's rear strip.
   **Changed 2026-10-08:** earlier versions used two identical boards with 5/3 cm long-side
   clearance, then 4 cm of USB-C room at the short ends; neither matched what is on the boards.
+  **Changed 2026-10-09:** the board holds 6 MAX485 modules, two per RJ45 (owner correction;
+  earlier pages said 8). The board, its 3 cm strips and the three RJ45s are unchanged — the
+  module count never set any dimension.
 - **C14 in the left wall right behind the AC terminals, not in the back wall.** Its wires run
   ~10 mm to the terminals, so the mains region is the left-front corner only; the floor behind it
   (x 0–80, y 179–232) is usable; the LED exits' wiring room is there. With the C14 in the back wall the whole

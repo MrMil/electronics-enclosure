@@ -1,6 +1,6 @@
-# 100W-masterbox — S-100-5 PSU, a MAX485 board (8 modules) and an ESP32
-# board, three RJ45 bulkheads for the RS485 outputs, four JST-SM LED exits,
-# C14 inlet. Uses the whole A1 bed. Docs: docs/enclosures/100w-masterbox.md
+# 100W-masterbox — S-100-5 PSU, a MAX485 board (6 modules) and an ESP32
+# board, three RJ45 bulkheads for the RS485 outputs (2 MAX485s per RJ45),
+# four JST-SM LED exits, C14 inlet. Uses the whole A1 bed. Docs: docs/enclosures/100w-masterbox.md
 #
 # Frame: interior corner at the origin, x = length (left -> right wall),
 # y = width (front -> back wall), z = up from the floor's top surface.
@@ -36,7 +36,7 @@ psu:
     terminal_clearance: 35   # library 40; the lid sets the length
 
 perfboards:
-  # MAX485 board: 8 modules overhanging both long sides, 30 mm free on each.
+  # MAX485 board: 6 modules overhanging both long sides, 30 mm free on each.
   - part: dikavs-half
     at: [81, 141]
     rotate: 0
