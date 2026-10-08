@@ -32,7 +32,7 @@ psu:
 
 perfboards:
   - part: dikavs-half
-    at: [124, 20]        # parallel to the PSU (long side along y); 20 mm to the front wall for pigtails
+    at: [124, 34]        # parallel to the PSU (long side along y); 3 mm from the back wall like the PSU, leaving 34 mm in front for the round LED holes
     rotate: 90
 
 panel_parts:
@@ -44,9 +44,11 @@ panel_parts:
 
 wire_holes:
   # LED strips: JST-SM pigtails pass down through the floor, in the strip
-  # between the perfboard and the front wall; zip-tie anchor beside each slot.
-  - {part: jst-sm-3pin, wall: floor, at: [140, 10], rotate: 90, anchor_at: [10.25, 0]}
-  - {part: jst-sm-3pin, wall: floor, at: [166, 10], rotate: 90, anchor_at: [10.25, 0]}
+  # between the perfboard and the front wall. The holes are round (20 mm) so
+  # the board under the box can be drilled (18 mm) straight through them; the
+  # zip-tie anchor sits between each hole and the perfboard, on the wires' path.
+  - {part: jst-sm-3pin, wall: floor, at: [140, 12], anchor_at: [0, 16]}
+  - {part: jst-sm-3pin, wall: floor, at: [166, 12], anchor_at: [0, 16]}
 
 vents:
   lid_over_psu: true

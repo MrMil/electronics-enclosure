@@ -124,6 +124,10 @@ def validate(m: Model) -> None:
     holes = [(x, y, max(d, csk) / 2, max(d, csk) / 2, f"floor mounting hole at ({x}, {y})")
              for x, y, d, csk in m.prims["FLOOR_MOUNTS"]]
     holes += getattr(m, "floor_exits", [])
+    for x, y, ex, ey, label in getattr(m, "floor_exits", []):
+        if x - ex < margin or y - ey < margin or x + ex > m.L - margin or y + ey > m.W - margin:
+            m.errors.append(f"{label}: closer than {margin} mm to a wall (x {x - ex:.1f}..{x + ex:.1f}, "
+                            f"y {y - ey:.1f}..{y + ey:.1f})")
     for x, y, ex, ey, label in holes:
         for k in m.keepouts:
             if k.kind == "solid" and k.x0 - ex - margin < x < k.x1 + ex + margin \

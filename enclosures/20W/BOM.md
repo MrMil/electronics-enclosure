@@ -41,14 +41,14 @@ Print in PETG or ASA, not PLA: the PSU case runs warm at full load and PLA creep
 
 Floor wire exits pass through the board below. Hole centres, measured from the left-wall mounting tab hole (x to the right, y toward the back, looking down on the enclosure):
 
-- x +150.1 mm, y -90.0 mm: drill ≥ 20 mm (clears the 15.6 × 10.2 slot and the connector through it)
-- x +176.1 mm, y -90.0 mm: drill ≥ 20 mm (clears the 15.6 × 10.2 slot and the connector through it)
+- x +150.1 mm, y -88.0 mm: drill 18 mm straight through the 20 mm hole, with the enclosure screwed down and empty (the bit clears the plastic by 1 mm all round)
+- x +176.1 mm, y -88.0 mm: drill 18 mm straight through the 20 mm hole, with the enclosure screwed down and empty (the bit clears the plastic by 1 mm all round)
 
 ## Check before printing
 
 Taken from datasheets, not measured on your parts:
 
-- jst-sm-3pin: from JST SM connector datasheet, housing drawings p.3 (https://www.jst-mfg.com/product/pdf/eng/eSM.pdf) — both housings pass the 15.6 x 10.2 mm slot without squeezing the latch flaps
+- jst-sm-3pin: from JST SM connector datasheet, housing drawings p.3 (https://www.jst-mfg.com/product/pdf/eng/eSM.pdf) — both housings pass the 15.6 x 10.2 mm slot (wall exits) and an 18 mm drilled hole (floor exits) without squeezing the latch flaps
 
 ## Warnings
 

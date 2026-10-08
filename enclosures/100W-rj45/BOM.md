@@ -42,5 +42,5 @@ Print in PETG or ASA, not PLA: the PSU case runs warm at full load and PLA creep
 Taken from datasheets, not measured on your parts:
 
 - psu s-100-5: from Mean Well S-100F datasheet, case No. 902 (https://www.meanwell.com/Upload/PDF/S-100F/S-100F-SPEC.PDF) — bottom M3 holes 120 mm apart along the length and 80 mm across; nearest hole 62 mm from the terminal end
-- jst-sm-3pin: from JST SM connector datasheet, housing drawings p.3 (https://www.jst-mfg.com/product/pdf/eng/eSM.pdf) — both housings pass the 15.6 x 10.2 mm slot without squeezing the latch flaps
+- jst-sm-3pin: from JST SM connector datasheet, housing drawings p.3 (https://www.jst-mfg.com/product/pdf/eng/eSM.pdf) — both housings pass the 15.6 x 10.2 mm slot (wall exits) and an 18 mm drilled hole (floor exits) without squeezing the latch flaps
 - lid: back-wall tongue moved from u=22 to u=88 to clear other features

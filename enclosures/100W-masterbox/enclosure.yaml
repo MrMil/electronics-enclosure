@@ -62,8 +62,8 @@ panel_parts:
 
 wire_holes:
   # LED strips: JST-SM pigtails through the back wall left of the RJ45s, behind
-  # the C14 and well clear of the mains wiring. 100W boxes keep LED exits in a
-  # side wall (owner).
+  # the C14 and well clear of the mains wiring. The owner wants this box's LED
+  # exits in a wall, not the floor.
   - {part: jst-sm-3pin, wall: back, u: 14, z: 17}
   - {part: jst-sm-3pin, wall: back, u: 32, z: 17}
   - {part: jst-sm-3pin, wall: back, u: 50, z: 17}

@@ -15,7 +15,9 @@ Parent: [README.md](README.md)
    footprints stay within the wall's height; features of different parts on one wall keep
    `feature_margin` apart (two outside-only footprints may touch). Panel-part flange nuts use a
    0.5 mm floor/lip clearance instead (`WallFeat.edge_margin`).
-4. Floor mounting holes and floor wire exits are not under any solid keep-out.
+4. Floor mounting holes and floor wire exits are not under any solid keep-out; floor wire exits
+   also keep `feature_margin` from the walls (reason in
+   [../enclosure/wall_openings.md](../enclosure/wall_openings.md)).
 5. Mains panel parts are on the PSU's AC side; perfboards and low-voltage panel parts on its DC
    side, or on the AC side ≥ `lv_gap` from the mains region when `lv_route: far_end` (rules in
    [../enclosure/README.md](../enclosure/README.md) and [../enclosure/wire_routing.md](../enclosure/wire_routing.md)).

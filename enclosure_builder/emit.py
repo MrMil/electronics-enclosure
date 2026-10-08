@@ -68,8 +68,8 @@ def drilling_guide(m: Model) -> list:
     """Where to drill the mounting surface under floor wire exits, measured
     from the first mounting hole, so wires can pass through the board the
     enclosure is screwed to."""
-    slots, wall = m.prims["FLOOR_SLOTS"], m.cfg["box"]["wall"]
-    if not slots:
+    holes, wall = getattr(m, "floor_drills", []), m.cfg["box"]["wall"]
+    if not holes:
         return []
     if m.prims["TABS"]:
         t = m.prims["TABS"][0]
@@ -84,10 +84,14 @@ def drilling_guide(m: Model) -> list:
     out = ["## Drilling the mounting surface", "",
            f"Floor wire exits pass through the board below. Hole centres, measured from {ref_name} "
            "(x to the right, y toward the back, looking down on the enclosure):", ""]
-    for x, y, w, h, r, rot in slots:
-        d = (w ** 2 + h ** 2) ** 0.5
-        out.append(f"- x {x - ref[0]:+.1f} mm, y {y - ref[1]:+.1f} mm: drill ≥ {d + 1.5:.0f} mm "
-                   f"(clears the {w:g} × {h:g} slot and the connector through it)")
+    for x, y, w, h, drill in holes:
+        pos = f"- x {x - ref[0]:+.1f} mm, y {y - ref[1]:+.1f} mm: "
+        if drill:
+            out.append(pos + f"drill {drill:g} mm straight through the {w:g} mm hole, with the enclosure "
+                       f"screwed down and empty (the bit clears the plastic by {(w - drill) / 2:g} mm all round)")
+        else:
+            d = (w ** 2 + h ** 2) ** 0.5
+            out.append(pos + f"drill ≥ {d + 1.5:.0f} mm (clears the {w:g} × {h:g} slot and the connector through it)")
     return out + [""]
 
 

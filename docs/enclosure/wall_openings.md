@@ -4,7 +4,8 @@ Path: [docs](../README.md) › [enclosure](README.md) › **wall_openings**
 Parent: [README.md](README.md)
 **Code:** `components/panel/`, `components/passthrough/`, `enclosure_builder/layout.py` (`place_panel_parts`, `place_wire_holes`), `scad/enclosure.scad` (`wall_cutters`, `FLOOR_SLOTS`, `tie_anchor`)
 **Covers:** everything wires or connectors pass through, except vents: panel parts (C14 inlet,
-RJ45 bulkhead) and wire exits (round holes or connector pass-through slots, in a wall or the floor).
+RJ45 bulkhead) and wire exits (round holes or connector pass-through slots in a wall; round holes
+in the floor).
 
 ## What it does
 
@@ -14,9 +15,10 @@ keep-out, a `cable` wiring zone behind the body, optional `max_panel_t`, and `ma
 parts carrying mains (they must sit on the PSU's AC side, see [README.md](README.md)).
 
 A **wire exit** (`wire_holes[]`) is either a round hole (`d`) or a library pass-through
-(`part:` from `components/passthrough/`, a rounded slot), on a wall (`wall, u, z`) or in the
-floor (`wall: floor, at: [x, y], rotate`). Each gets a wiring zone `inside_depth` deep and, by
-default, a printed zip-tie anchor.
+(`part:` from `components/passthrough/`: a rounded `slot` for walls, a `round` hole with its
+`drill` size for the floor), on a wall (`wall, u, z`) or in the floor (`wall: floor, at: [x, y]`;
+`rotate` turns a slot, and on a round hole only picks where the default zip-tie anchor goes).
+Each gets a wiring zone `inside_depth` deep and, by default, a printed zip-tie anchor.
 
 ## Decisions
 
@@ -50,11 +52,27 @@ default, a printed zip-tie anchor.
 - **Pass-throughs are a library kind, not inline sizes**, because the same connector will be used
   on every LED enclosure and its size came from a datasheet that should be cited once.
 - **Floor exits take `anchor_at: [dx, dy]`** to move the zip-tie anchor when the default spot
-  (just behind the slot) is under a part, as in the 20W.
+  (just behind the hole; to its right with `rotate: 90`) is under a part, as in the 20W.
 - **Wire exits can be in the floor** (owner's option 3). Floor exits are rejected if they lie
-  under a solid keep-out. The surface below must have matching holes (the owner drills the
-  wooden mounting board); the BOM's "Drilling the mounting surface" gives their positions from a
-  mounting hole and a drill size covering the slot's diagonal.
+  under a solid keep-out or within `feature_margin` of a wall — a hole tangent to a wall leaves
+  no floor between them, and the check was needed once floor holes grew to 20 mm. The surface
+  below must have matching holes (the owner drills the wooden mounting board); the BOM's
+  "Drilling the mounting surface" gives their positions from a mounting hole and the drill size.
+- **Floor exits are round, and the board is drilled straight through them** (owner,
+  2026-10-08): with the enclosure screwed down and empty, the owner drills the board through each
+  hole, so the board's holes line up without measuring. A slot cannot be drilled through without
+  a bit bigger than its width cutting the plastic. Wall exits stay slots: nothing is drilled
+  through them, and a 20 mm round hole with its 45° point would take far more wall.
+  **JST SM: 20 mm printed hole, 18 mm drill.** The connector needs a circle of ~15.2 mm (the
+  plug's latch-flap tips) and at most 16.4 mm (the diagonal of the plug's 14.6 × 7.4 envelope);
+  18 mm is a common spade, Forstner and step-drill size and clears that by 0.8 mm a side. The
+  printed hole is 2 mm bigger than the bit so a hand-held bit that wanders 1 mm still does not
+  touch the plastic (FDM holes also print a little small). The part's `round` hole is used in
+  the floor automatically rather than by a per-hole switch, because every floor exit goes
+  through the board under the box.
+  **Changed 2026-10-08:** floor exits were the same 15.6 × 10.2 slot as wall exits, with the
+  BOM giving a drill size covering its diagonal; the owner could not drill the board through
+  the slot without damaging it.
 - **Every opening has a 45° pointed top**, full on wire exits; on panel parts only when the whole
   point is hidden by the flange, otherwise none. Wall-feature extents include the roof, so the validator spaces it. See
   [printability.md](printability.md).

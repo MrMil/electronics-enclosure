@@ -26,7 +26,8 @@ Per enclosure, under `enclosures/<name>/`:
   wants them visible for every enclosure, 2026-10-08), printed parts with sizes and which
   openings were left without a self-supporting top
   (so the slicer's support settings can be chosen knowingly), how to close/open the lid, hardware totals with what each
-  is for, where to drill the mounting surface under floor wire exits, "Check before printing"
+  is for, where to drill the mounting surface under floor wire exits (for a round hole: the drill
+  to put straight through it, see [../enclosure/wall_openings.md](../enclosure/wall_openings.md)), "Check before printing"
   (datasheet values), warnings.
 
 `build.py --coupon <passthrough part>` writes `test-prints/<part>-coupon.stl`: a wall-thick plate

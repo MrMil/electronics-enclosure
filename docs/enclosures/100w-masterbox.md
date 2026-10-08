@@ -37,8 +37,8 @@ Slide-lock lid, zip-tie lug on the front wall, four countersunk floor screws.
 - **Boards side by side, both long side along x:** 81 + 81 mm fills the 163 mm between the mains
   separation (x 81) and the right wall; the MAX485 board's 30 + 55 + 30 mm fits the back band's
   121 mm depth.
-- **LED exits in the back wall at u = 15–66, z = 17**: 100W boxes keep LED exits in a side wall
-  (see [README.md](README.md)); this stretch is ~50 mm from the mains wiring and left of the RJ45s.
+- **LED exits in the back wall at u = 15–66, z = 17**: the owner wants this box's LED exits in a
+  wall, not the floor (see [README.md](README.md)); this stretch is ~50 mm from the mains wiring and left of the RJ45s.
   **Changed 2026-10-08:** briefly in the floor; the owner wants them in the walls.
 - **RJ45s behind the MAX485 board get 36 mm of cable room** (library 60): enough for the plug and
   boot, then the cable turns along the 30 mm clearance strip. The one behind the ESP32 keeps 60.

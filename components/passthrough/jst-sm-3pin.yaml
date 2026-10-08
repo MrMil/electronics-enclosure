@@ -5,7 +5,7 @@ kind: passthrough
 name: JST SM 3-pin pass-through
 source: JST SM connector datasheet, housing drawings p.3 (https://www.jst-mfg.com/product/pdf/eng/eSM.pdf)
 verified: datasheet
-check: "both housings pass the 15.6 x 10.2 mm slot without squeezing the latch flaps"
+check: "both housings pass the 15.6 x 10.2 mm slot (wall exits) and an 18 mm drilled hole (floor exits) without squeezing the latch flaps"
 
 # Full outside envelope of either 3-pin housing, read from the JST drawings
 # at 700 dpi (2026-10-08, after 11.5 x 8.5 slots printed in the 20W were too
@@ -16,6 +16,14 @@ check: "both housings pass the 15.6 x 10.2 mm slot without squeezing the latch f
 #     long) on one long face -> 10.5 x 9.2
 # Union 14.6 x 9.2, + 0.5 mm per side. Long side runs across the pins.
 slot: {w: 15.6, h: 10.2, r: 1.0}
+# Floor exits are round instead, so the board under the enclosure can be
+# drilled straight through them (owner, 2026-10-08). The connector needs a
+# circle of ~15.2 mm (plug flap tips at 7.3 / 2.0 mm from its axis) and at most
+# 16.4 mm (the plug's 14.6 x 7.4 bounding box diagonal); an 18 mm bit (common
+# spade, Forstner and step-drill size) clears that by 0.8 mm per side. The
+# printed hole is 2 mm bigger than the bit, so a hand-held bit that wanders
+# 1 mm still does not touch the plastic.
+round: {d: 20, drill: 18}
 # Pigtails are fed out before the board is screwed down; afterwards only wire
 # stays inside, which needs ~15-20 mm to bend from the board edge to the wall.
 inside_depth: 20

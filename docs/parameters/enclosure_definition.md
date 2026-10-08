@@ -16,7 +16,7 @@ Parent: [README.md](README.md)
 | `psu` | `part`, `at: [x, y]` (footprint corner with smallest x, y), `terminals: left\|right\|front\|back` (the wall the terminal end faces), optional `lv_route: far_end` (left/right only), `lv_gap` |
 | `perfboards[]` | `part`, `at: [x, y]` (board corner with smallest x, y), `rotate: 0\|90`, optional `min_standoff`, `clearance: {left\|right\|front\|back: mm}` |
 | `panel_parts[]` | `part`, `wall`, `u`, `z` (cutout centre), `rotate: 0\|90` |
-| `wire_holes[]` | `wall`, `u`, `z` and either `d` (round) or `part` (from `components/passthrough/`); `wall: floor` takes `at: [x, y]`, `rotate`, optional `anchor_at: [dx, dy]`; optional `tie_anchor`, `inside_depth` |
+| `wire_holes[]` | `wall`, `u`, `z` and either `d` (round) or `part` (from `components/passthrough/`); `wall: floor` takes `at: [x, y]`, `rotate` (slot direction; for a round hole, only where the default anchor goes), optional `anchor_at: [dx, dy]`; optional `tie_anchor`, `inside_depth` |
 | `vents` | `lid_over_psu: bool`, `walls[]`: `{wall, u: [from, to], z: [from, to]}` regions |
 | `mounting` | `style: tabs\|floor`, `screw_d`, `head_d`, `tabs[]: {wall, u}` or `floor_holes[]: [x, y]` |
 | `lid.tab_u` | where the lid's detent tab sits on the left wall (keep it clear of left-wall parts) |

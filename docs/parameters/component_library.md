@@ -19,7 +19,7 @@ Kinds and their consumers:
 | `psu` | [../enclosure/psu_mount.md](../enclosure/psu_mount.md) |
 | `perfboard` | [../enclosure/perfboard_mount.md](../enclosure/perfboard_mount.md) |
 | `panel` (C14 inlet, RJ45, anything clamped in a wall cutout) | [../enclosure/wall_openings.md](../enclosure/wall_openings.md) |
-| `passthrough` (connector-sized slots, e.g. JST SM) | [../enclosure/wall_openings.md](../enclosure/wall_openings.md) |
+| `passthrough` (connector-sized wall slots and floor holes with their drill size, e.g. JST SM) | [../enclosure/wall_openings.md](../enclosure/wall_openings.md) |
 
 ## Decisions
 

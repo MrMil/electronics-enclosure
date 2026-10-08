@@ -1,0 +1,14 @@
+# 100W-leds-on-floor — 100W (no RJ45) with its four JST-SM LED exits in the
+# floor instead of the back wall: round holes, so the board under the
+# enclosure can be drilled straight through them. Docs: docs/enclosures/100w.md
+extends: 100W
+name: 100W-leds-on-floor
+
+wire_holes:
+  # LED strips: JST-SM pigtails pass down through the floor right of the
+  # perfboard, in the space 100W keeps free for 100W-rj45's patch cable.
+  # 2 x 2 grid, a zip-tie anchor behind each hole (the default spot).
+  - {part: jst-sm-3pin, wall: floor, at: [196, 126]}
+  - {part: jst-sm-3pin, wall: floor, at: [222, 126]}
+  - {part: jst-sm-3pin, wall: floor, at: [196, 160]}
+  - {part: jst-sm-3pin, wall: floor, at: [222, 160]}

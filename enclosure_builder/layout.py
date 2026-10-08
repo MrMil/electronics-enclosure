@@ -522,14 +522,21 @@ def place_wire_holes(m: Model) -> None:
         if h["wall"] == "floor":
             x, y = h["at"]
             rot = h.get("rotate", 0)
-            w, hh, r = (slot["w"], slot["h"], slot.get("r", 0)) if slot else (d, d, d / 2)
+            # A part's `round` hole wins in the floor: the board under the box
+            # is drilled straight through it, which a slot does not allow.
+            rnd = spec.get("round")
+            if rnd:
+                d = rnd["d"]
+            w, hh, r = (d, d, d / 2) if rnd or not slot else (slot["w"], slot["h"], slot.get("r", 0))
             m.prims["FLOOR_SLOTS"].append([x, y, w, hh, r, rot])
             ex, ey = (w / 2, hh / 2) if rot == 0 else (hh / 2, w / 2)
             m.wiring(Box3(x - ex, y - ey, 0, x + ex, y + ey, min(inside, lip_bottom(m)), label))
             m.floor_exits = getattr(m, "floor_exits", []) + [(x, y, ex, ey, label)]
+            m.floor_drills = getattr(m, "floor_drills", []) + [(x, y, w, hh, rnd.get("drill") if rnd else None)]
             if anchor:
                 # `anchor_at: [dx, dy]` places the zip-tie anchor relative to the
-                # slot when the default spot (just behind it) is taken.
+                # hole when the default spot (just behind it; `rotate: 90` puts
+                # it to the right) is taken.
                 if h.get("anchor_at"):
                     ax_, ay_ = x + h["anchor_at"][0], y + h["anchor_at"][1]
                 else:
