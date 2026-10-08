@@ -1,0 +1,17 @@
+# 100W-rj45 — 100W plus an RJ45 bulkhead in the right
+# wall, level with the perfboard in the back (low-voltage end of the) band,
+# its patch cable running toward the perfboard. Docs: docs/enclosures/100w.md
+extends: 100W
+name: 100W-rj45
+
+# Lists replace, so the inlet is restated.
+panel_parts:
+  - part: c14-fuse-switch
+    wall: back
+    u: 37
+    z: 24
+    rotate: 90
+  - part: rj45-bulkhead
+    wall: right
+    u: 138.5             # level with the perfboard's centre
+    z: 22

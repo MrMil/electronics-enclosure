@@ -1,0 +1,93 @@
+# Defaults for every enclosure. An enclosure's enclosure.yaml is deep-merged on
+# top of this file, so any key here can be overridden per enclosure.
+# Units: mm. Reasons for these values: docs/parameters/defaults.md
+
+printer:
+  bed: [256, 256]        # X/Y print area (Bambu Lab A1); the build fails if a part does not fit
+  bed_margin: 2          # total mm kept free per axis so the part is not right at the bed edge
+  support_margin: 0      # bed room kept outside each wall whose holes need slicer supports
+  layer_h: 0.2           # height of the sacrificial bridge layer in bed-side pockets
+
+box:
+  wall: 2.4              # 6 perimeters of a 0.4 nozzle
+  floor: 3.0
+  outer_radius: 3.0      # vertical outer edges
+  feature_margin: 2.0    # min material between neighbouring wall features
+
+hardware:
+  # Every bolt in the enclosure is M3 socket head (ISO 4762 / DIN 912).
+  m3:
+    clear_d: 3.4
+    head_d: 5.5
+    head_h: 3.0
+    head_cb_d: 6.4       # counterbore for the head
+    head_recess: 0.3     # how far a head sits below the surface it is recessed into
+    nut_af: 5.5          # across flats
+    nut_h: 2.4
+    nut_pocket_clearance: 0.3   # hex pocket in the floor (nut dropped in from below)
+    lengths: [5, 6, 8, 10, 12, 14, 16, 18, 20, 25, 30]
+
+lid:
+  # Drop-and-slide lid, no hardware. Reasons: docs/enclosure/lid_closure.md
+  thickness: 2.4
+  lip_h: 7.0             # lip height; also carries the lock tongues
+  lip_t: 1.6
+  lip_clearance: 0.3
+  slide: 10              # the lid drops in this far left of closed, then slides right to lock
+  tongues: auto          # u positions on the front/back walls, or auto (ends + middle)
+  tongue_w: 8            # along the wall
+  tongue_reach: 2.0      # tongue tip, measured outward from the wall's inner face
+  tongue_clearance: 0.3
+  rim: 3.0               # wall left above the lock slot, at the inner face
+  tab_u: null            # detent tab centre along the left wall (null = middle)
+  tab_w: 14
+  tab_len: 30            # flexing length; ~1 % strain when lifted to clear the tooth
+  tab_slit: 1.2
+  tab_pull: 4            # finger pull sticking out past the left wall
+  tooth_h: 2.0
+  tooth_len: 3.0
+  tooth_w: 8
+  lock_lug: null         # {wall: front|back, u: ...} adds a zip-tie lock
+  lug_w: 12              # along the wall
+  lug_reach: 12          # out from the wall's outer face
+  lug_hole: 5.0          # takes zip ties up to 4.8 mm wide
+  lug_t: 3.0             # wall lug thickness at its tip (45° underneath)
+
+wire_guides:             # printed loops for psu.lv_route, leaning on a wall
+  w: 7                   # tunnel width, out from the wall
+  h: 8                   # tunnel height before the 45° roof starts
+  t: 1.6                 # leg and roof thickness
+  len: 6                 # along the wires
+  spacing: 45
+  fits: null             # optional [a, b]: a connector cross-section that must pass through
+  fit_clearance: 0.8
+
+perfboard:
+  min_standoff: 6        # gap under the board for solder joints and wires
+
+vents:
+  slot_w: 2.5            # < 12.5 mm finger probe; small enough to stop most debris
+  pitch: 6.0
+  lid_slot_w: 2.5
+  lid_pitch: 6.0
+  lid_margin: 4.0        # keep lid slots this far inside the lid lip
+  lid_over_psu: true     # slot the lid above the PSU (not above its terminals)
+  walls: []              # wall slot regions, set per enclosure
+
+wire_tie:                # printed zip-tie anchor next to a wire hole
+  anchor_distance: 12    # anchor centre, measured in from the wall
+  w: 4.5                 # tunnel width (fits 2.5-4 mm ties)
+  h: 2.0                 # tunnel height
+  len: 5.0               # anchor length along the wall
+
+mounting:
+  style: tabs            # tabs | floor
+  screw_d: 4.5           # through-hole for the screw that fixes the enclosure in place
+  head_d: 9.0            # countersink diameter; set equal to screw_d for a plain hole
+  tab_len: 14
+  tab_w: 18
+  tab_t: 4
+  rib_h: 8
+  rib_t: 2
+  tabs: []
+  floor_holes: []

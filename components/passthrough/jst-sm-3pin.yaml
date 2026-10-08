@@ -1,0 +1,22 @@
+# Slot a JST SM 3-pin connector (the standard WS2812B / LED-strip pigtail)
+# passes through, so pigtails can be soldered to the perfboard outside the
+# enclosure and fed out. Docs: docs/enclosure/wall_openings.md
+kind: passthrough
+name: JST SM 3-pin pass-through
+source: JST SM connector datasheet, housing drawings p.3 (https://www.jst-mfg.com/product/pdf/eng/eSM.pdf)
+verified: datasheet
+check: "both housings pass the 15.6 x 10.2 mm slot without squeezing the latch flaps"
+
+# Full outside envelope of either 3-pin housing, read from the JST drawings
+# at 700 dpi (2026-10-08, after 11.5 x 8.5 slots printed in the 20W were too
+# small for the owner's connectors):
+#   plug SMP-03V-BC: body 8 x 7.4, latch flaps 4 mm wide stand ~3.2 mm out
+#     each side across the pins -> 14.6 x 7.4
+#   receptacle SMR-03V-B: body 10.5 x 7.5, lock bump 1.7 mm out (3.7 mm
+#     long) on one long face -> 10.5 x 9.2
+# Union 14.6 x 9.2, + 0.5 mm per side. Long side runs across the pins.
+slot: {w: 15.6, h: 10.2, r: 1.0}
+# Pigtails are fed out before the board is screwed down; afterwards only wire
+# stays inside, which needs ~15-20 mm to bend from the board edge to the wall.
+inside_depth: 20
+tie_anchor: true

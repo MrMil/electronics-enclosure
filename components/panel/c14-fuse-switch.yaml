@@ -1,0 +1,21 @@
+# IEC C14 inlet module with fuse drawer and lit rocker switch (the common
+# "3-in-1" flange-mount part). Docs: docs/enclosure/wall_openings.md
+kind: panel
+name: C14 inlet + fuse + rocker switch, 2-hole flange
+# Measured by the owner 2026-10-07. Body 27 x 47; holes 3.6 mm, inner edges
+# 36.2 mm apart (centres 39.8), centred vertically; flange 2.6 mm thick,
+# 5 mm beyond the body at the sides and ~11 mm at top and bottom (hard to
+# measure); wires reach ~60 mm behind the panel.
+verified: true
+
+# Frame on the wall: u along the wall, z up, both relative to the cutout
+# centre. rotate: 90 in an enclosure turns all of these by 90 degrees.
+cutout: {shape: rect, w: 27.5, h: 47.5, r: 0.5}   # 27 x 47 body + 0.25 clearance per side
+bolts: [[-19.9, 0], [19.9, 0]]   # M3 through the flange and the wall, nut inside
+bolt_stack: 2.6                  # flange thickness under the bolt head
+# Outside footprint: ears reach 19.9 + 1.8 + 3.5 = 25.2 mm each side; 47 + 2 x 11 tall.
+flange: [50.4, 69]
+inside: {w: 28, h: 48, depth: 35}    # body + spade terminals (depth estimated)
+cable: {w: 28, h: 48, depth: 60}     # wires, as measured
+max_panel_t: null
+mains: true                      # must sit on the PSU's AC side

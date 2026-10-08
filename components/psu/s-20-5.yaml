@@ -1,0 +1,29 @@
+# Generic "S-20-5" 5 V 4 A enclosed switching supply, 87 x 59 footprint.
+# Docs: docs/enclosure/psu_mount.md
+kind: psu
+name: S-20-5 (5V 4A, 87x59)
+# No manufacturer drawing exists for this case: Mean Well's S-20 is long
+# discontinued and clone makers publish only the larger S-25+ cases (98x97).
+# Footprint measured by the owner (2026-10-08). Hole spacing from the owner's
+# "64.6 mm between hole edges", read as inner edges of ~3 mm holes (centres
+# 67.6 apart). Hole positions and height read off photos of the unit.
+verified: false
+
+# Local frame: x along the length with x = 0 at the terminal-block end,
+# y across, growing toward the left of someone facing the terminals.
+size: [87, 59, 34]     # height ~31-34 from the side photo; 34 keeps the keep-out safe
+
+# Bottom face: two threaded clinch nuts along the AC-side long edge (owner,
+# 2026-10-08), ~4.5 mm in from it, ~5.5 mm from the terminal end and ~14 mm
+# from the far end (photo estimates). py grows toward the AC side (ac_side: left).
+holes: [[5.5, 54.5], [73.1, 54.5]]
+hole_slack: 2          # +/- along the length, for the photo-estimated positions
+
+max_penetration: 3     # same conservative limit as the S-100-5 (no data for this case)
+bolt_len: 6
+
+# 5 screw terminals across the terminal end, wires leaving toward it:
+# L, N, FG, V-, V+ and a Vo ADJ trimmer (owner's photo).
+terminal_clearance: 30
+ac_side: left          # facing the block: AC on the left, DC on the right
+terminal_block: {len: 12, h: 10}   # preview ghost only

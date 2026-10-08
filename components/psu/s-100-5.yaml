@@ -1,0 +1,36 @@
+# Generic "S-100-5" 5 V 20 A enclosed switching supply, 199 x 98 x 38. It is a
+# clone of the Mean Well S-100F (case No. 902); the clone maker's own drawing
+# (Finglai S-100) has identical hole positions. Docs: docs/enclosure/psu_mount.md
+kind: psu
+name: S-100-5 (5V 20A, 199x98x38)
+source: Mean Well S-100F datasheet, case No. 902 (https://www.meanwell.com/Upload/PDF/S-100F/S-100F-SPEC.PDF)
+verified: datasheet
+check: "bottom M3 holes 120 mm apart along the length and 80 mm across; nearest hole 62 mm from the terminal end"
+
+# Local frame: x along the length with x = 0 at the terminal-block end,
+# y across the width, z up from the bottom plate.
+size: [199, 98, 38]
+
+# Bottom face, 4 x M3 threaded: 4.5 + 57.5 = 62 mm from the terminal end,
+# 120 mm pitch; rows 9 mm from each long edge (80 mm pitch).
+holes: [[62, 9], [182, 9], [62, 89], [182, 89]]
+hole_slack: 1.5        # floor holes are slots, +/- this much along x (print tolerance)
+
+# How deep a bolt may enter the case. The S-100F drawing gives no limit; Mean
+# Well's install manual says to keep screws clear of internal parts and
+# publishes limits only on newer drawings, the smallest of which is 3 mm
+# (LRS-350 bottom holes, "4-M4 L=3mm"). 3 mm is used.
+max_penetration: 3
+bolt_len: 6
+
+# Terminal block: 7 screw terminals across the terminal end, screws facing up,
+# wires leaving toward the end. 1 AC/L, 2 AC/N, 3 FG, 4-5 -V, 6-7 +V.
+# 40 mm fits ferrules, the bend of 14 AWG output wire, and the inlet's wires
+# arriving from the side.
+terminal_clearance: 40
+# Facing the terminal block from outside, AC (L, N, FG) is on the left and DC
+# (-V, -V, +V, +V) on the right (owner's photo 2026-10-07; matches the S-100F
+# pin order). The validator keeps mains parts on the AC side and low-voltage
+# parts on the DC side so their wires never cross.
+ac_side: left
+terminal_block: {len: 15, h: 10}   # preview ghost only

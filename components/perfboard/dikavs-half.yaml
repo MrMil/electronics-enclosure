@@ -1,0 +1,14 @@
+# DIKAVS breadboard-layout perfboard, 30 rows, a-e / f-j + two rails per side.
+# Docs: docs/enclosure/perfboard_mount.md
+kind: perfboard
+name: DIKAVS half-size breadboard PCB (30 rows)
+# Measured by the owner 2026-10-07: 81 x 55 board, 3.1 mm holes, hole edge
+# 9.6 mm from the short side. Holes sit on the centre channel (photo), so
+# centred across the 55 mm width.
+verified: true
+
+size: [81, 55]           # x along the rows, y across
+thickness: 1.6
+hole_d: 3.1
+holes: [[11.15, 27.5], [69.85, 27.5]]   # 9.6 + 3.1/2 from each short edge
+component_h: 25          # keep-out above the board for parts and wires

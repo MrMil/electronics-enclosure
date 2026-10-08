@@ -1,0 +1,67 @@
+# 100W — S-100-5 PSU, one perfboard, C14 inlet, four JST-SM LED
+# exits. No RJ45 (see 100W-rj45). Docs: docs/enclosures/100w.md
+#
+# Frame: interior corner at the origin, x = length (left -> right wall),
+# y = width (front -> back wall), z = up from the floor's top surface.
+# Wall features use (wall, u, z): u is measured along the wall from the end
+# with the smaller x (front/back walls) or smaller y (left/right walls).
+# Anything not set here comes from config/defaults.yaml.
+#
+# Wiring: the PSU's terminals face the left wall, so its AC terminals are on
+# the back (+y) side. The back band holds the inlet (by the terminals) and the
+# perfboard (toward the far end). Low-voltage wires leave the DC terminals
+# into the front channel, run along the PSU through printed loops and round
+# its right-hand end into the back band. Mains wiring never meets them.
+
+name: 100W
+
+box:
+  # height: set by the inlet lying down — its two flange nuts, 40 mm apart one
+  # above the other, must clear the floor and the lid lip (PSU alone needs ~50)
+  inner: [244, 186, 55]
+
+lid:
+  lock_lug: {wall: front, u: 70}   # zip-tie lock, between the front tongues
+
+psu:
+  part: s-100-5
+  at: [35, 10]           # 35 mm terminal space; 10 mm front channel for the LV loops
+  terminals: left
+  lv_route: far_end      # LV wires: front channel -> round the right end -> back band
+  override:
+    # 35 instead of the library's 40: the inlet's wires now arrive from behind,
+    # not from the side, and 5 mm more would put the lid past the A1 bed.
+    terminal_clearance: 35
+
+perfboards:
+  - part: dikavs-half
+    at: [100, 111]       # back band, far from the inlet; 20 mm to the back wall for JST pigtails
+    rotate: 0
+
+panel_parts:
+  - part: c14-fuse-switch
+    wall: back           # AC side, right behind the PSU's L/N/FG terminals
+    u: 37                # flange (69 wide when rotated) clear of the corner
+    z: 24                # lower nut clears the floor, upper nut clears the lid lip
+    rotate: 90           # lying down: 50 mm tall instead of 69
+
+wire_holes:
+  # LED strips: JST-SM pigtails pass through the back (long) wall beside the perfboard
+  - {part: jst-sm-3pin, wall: back, u: 112, z: 17}
+  - {part: jst-sm-3pin, wall: back, u: 130, z: 17}
+  - {part: jst-sm-3pin, wall: back, u: 148, z: 17}
+  - {part: jst-sm-3pin, wall: back, u: 166, z: 17}
+
+vents:
+  lid_over_psu: true
+  walls:
+    - {wall: front, u: [36, 236], z: [6, 38]}    # along the PSU's front side
+    - {wall: right, u: [12, 106], z: [6, 38]}    # beside the PSU's far end
+
+mounting:
+  style: tabs
+  tabs:
+    - {wall: front, u: 40}
+    - {wall: front, u: 204}
+    - {wall: back, u: 100}     # clear of the inlet's flange
+    - {wall: back, u: 204}

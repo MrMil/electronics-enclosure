@@ -1,0 +1,63 @@
+# 20W — S-20-5 PSU, one perfboard, C14 inlet, two JST-SM LED exits.
+# Docs: docs/enclosures/20w.md
+#
+# Frame: interior corner at the origin, x = length (left -> right wall),
+# y = width (front -> back wall), z = up from the floor's top surface.
+# Wall features use (wall, u, z): u is measured along the wall from the end
+# with the smaller x (front/back walls) or smaller y (left/right walls).
+#
+# Layout (owner, 2026-10-08), left to right on one line: inlet in the left
+# wall, PSU with its terminals ("wires") facing the front wall, perfboard
+# parallel to the PSU. Facing the terminals from the front, AC is on the left
+# (toward the inlet) and DC on the right (toward the perfboard): no crossing.
+
+name: 20W
+
+box:
+  # height: set by the inlet lying down — its two flange nuts, 40 mm apart one
+  # above the other, must clear the floor and the lid lip (PSU alone needs ~45)
+  # width 118 = 28 terminal space + 87 PSU + 3: small enough for base and lid
+  # to share one A1 plate
+  inner: [184, 118, 55]
+
+lid:
+  lock_lug: {wall: right, u: 59}   # zip-tie lock on the short wall, so the lid stays narrow
+
+psu:
+  part: s-20-5
+  at: [60, 28]           # 28 mm terminal space to the front wall; inlet + its wires to the left
+  terminals: front
+  override:
+    terminal_clearance: 28   # 2 mm less than the library's 30, for the one-plate fit
+
+perfboards:
+  - part: dikavs-half
+    at: [124, 20]        # parallel to the PSU (long side along y); 20 mm to the front wall for pigtails
+    rotate: 90
+
+panel_parts:
+  - part: c14-fuse-switch
+    wall: left
+    u: 36                # toward the front: its wires turn straight into the terminal space
+    z: 24                # lower nut clears the floor, upper nut clears the lid lip
+    rotate: 90           # lying down: 50 mm tall instead of 69
+
+wire_holes:
+  # LED strips: JST-SM pigtails pass down through the floor, in the strip
+  # between the perfboard and the front wall; zip-tie anchor beside each slot.
+  - {part: jst-sm-3pin, wall: floor, at: [140, 10], rotate: 90, anchor_at: [10.25, 0]}
+  - {part: jst-sm-3pin, wall: floor, at: [166, 10], rotate: 90, anchor_at: [10.25, 0]}
+
+vents:
+  lid_over_psu: true
+  walls:
+    - {wall: back, u: [62, 117], z: [6, 38]}     # behind the PSU's far end
+
+mounting:
+  # Tabs on the short walls: the box is short enough that they cost nothing,
+  # while tabs on the long walls would make base + lid too deep for one plate.
+  style: tabs
+  tabs:
+    - {wall: left, u: 100}     # clear of the inlet's flange
+    - {wall: right, u: 20}
+    - {wall: right, u: 98}

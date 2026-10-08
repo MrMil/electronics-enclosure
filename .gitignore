@@ -1,0 +1,11 @@
+# Python environment
+.venv/
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# Generated outputs (enclosures/*/build, stl, preview, BOM.md) are committed on
+# purpose: the STLs and previews can be used without installing anything.
+# See docs/pipeline/README.md.

@@ -1,0 +1,15 @@
+# Round, threaded Cat6A shielded RJ45 bulkhead coupler with its own panel nut.
+# Docs: docs/enclosure/wall_openings.md
+kind: panel
+name: RJ45 Cat6A round bulkhead coupler
+# Measured by the owner 2026-10-07: thread 23.4 mm, nut 29 mm, 18 mm behind
+# the panel. The outside flange was not measured; assumed no larger than the nut.
+verified: true
+
+cutout: {shape: round, d: 24.0}      # 23.4 thread + clearance
+bolts: []                            # clamped by its own nut
+flange: [30, 30]
+inside: {w: 30, h: 30, depth: 18}    # nut + coupler body
+# Patch cable inside: plug ~22 mm + boot ~15 mm + bend radius of a Cat6A cable.
+cable: {w: 30, h: 30, depth: 60}
+max_panel_t: null

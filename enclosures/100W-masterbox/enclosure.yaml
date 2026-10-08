@@ -1,0 +1,81 @@
+# 100W-masterbox — S-100-5 PSU, a MAX485 board (8 modules) and an ESP32
+# board, three RJ45 bulkheads for the RS485 outputs, four JST-SM LED exits,
+# C14 inlet. Uses the whole A1 bed. Docs: docs/enclosures/100w-masterbox.md
+#
+# Frame: interior corner at the origin, x = length (left -> right wall),
+# y = width (front -> back wall), z = up from the floor's top surface.
+# Wall features use (wall, u, z): u is measured along the wall from the end
+# with the smaller x (front/back walls) or smaller y (left/right walls).
+#
+# PSU along the front, terminals left, AC side to the back. The C14 sits in
+# the left wall right behind the AC terminals, so the mains wiring stays in
+# the left-front corner. Behind the PSU: the MAX485 and ESP32 boards; low-
+# voltage wires run in the front channel through printed loops and round the
+# PSU's right end, never near the mains wiring.
+
+name: 100W-masterbox
+
+printer:
+  support_margin: 5      # bed room outside the left (C14) and back (RJ45) walls for supports
+
+box:
+  # x: 35 terminal space + 199 PSU + 10 loop channel; limited by the lid (+4 finger pull)
+  # y: 10 loop channel + 98 PSU + 3 + 30 + 55 + 30 + 6 (MAX485 board and its clearance);
+  #    limited by the base (+12 zip-tie lug in front, +5 support room behind)
+  inner: [244, 232, 55]
+
+lid:
+  lock_lug: {wall: front, u: 70}   # zip-tie lock, between the front tongues
+
+psu:
+  part: s-100-5
+  at: [35, 10]
+  terminals: left
+  lv_route: far_end      # LV wires: front channel -> round the right end -> back band
+  override:
+    terminal_clearance: 35   # library 40; the lid sets the length
+
+perfboards:
+  # MAX485 board: 8 modules overhanging both long sides, 30 mm free on each.
+  - part: dikavs-half
+    at: [81, 141]
+    rotate: 0
+    clearance: {front: 30, back: 30}
+  # ESP32 board: 30 mm free behind its long side for the USB-C cable.
+  - part: dikavs-half
+    at: [162, 111]
+    rotate: 0
+    clearance: {back: 30}
+
+panel_parts:
+  - part: c14-fuse-switch
+    wall: left           # right behind the PSU's L/N/FG terminals
+    u: 135
+    z: 24
+    rotate: 90
+  # RJ45s in the back wall. The two behind the MAX485 board have 36 mm of
+  # cable room — plug and boot, then the cable turns along the clearance strip;
+  # the one behind the ESP32 board keeps the full 60 mm.
+  - {part: rj45-bulkhead, wall: back, u: 96, z: 22, override: {cable: {depth: 36}}}
+  - {part: rj45-bulkhead, wall: back, u: 147, z: 22, override: {cable: {depth: 36}}}
+  - {part: rj45-bulkhead, wall: back, u: 200, z: 22}
+
+wire_holes:
+  # LED strips: JST-SM pigtails through the back wall left of the RJ45s, behind
+  # the C14 and well clear of the mains wiring. 100W boxes keep LED exits in a
+  # side wall (owner).
+  - {part: jst-sm-3pin, wall: back, u: 14, z: 17}
+  - {part: jst-sm-3pin, wall: back, u: 32, z: 17}
+  - {part: jst-sm-3pin, wall: back, u: 50, z: 17}
+  - {part: jst-sm-3pin, wall: back, u: 68, z: 17}
+
+vents:
+  lid_over_psu: true
+  walls:
+    - {wall: front, u: [40, 230], z: [6, 38]}    # along the PSU's front side (skips the loops)
+    - {wall: right, u: [12, 106], z: [6, 38]}    # beside the PSU's far end
+
+mounting:
+  # Floor screws: tabs would push the base past the bed on either axis.
+  style: floor
+  floor_holes: [[18, 60], [72, 125], [72, 185], [232, 222]]
