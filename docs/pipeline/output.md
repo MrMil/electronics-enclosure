@@ -22,7 +22,9 @@ Per enclosure, under `enclosures/<name>/`:
 - `preview/*.png` — closed box from two sides, open box with parts as coloured blocks and wiring
   zones in translucent orange (also from above), the empty base without lid from two sides and straight down, lid
   as printed.
-- `BOM.md` — printed parts with sizes and which openings were left without a self-supporting top
+- `BOM.md` — the three key renders at the top (empty base, base with parts, closed — the owner
+  wants them visible for every enclosure, 2026-10-08), printed parts with sizes and which
+  openings were left without a self-supporting top
   (so the slicer's support settings can be chosen knowingly), how to close/open the lid, hardware totals with what each
   is for, where to drill the mounting surface under floor wire exits, "Check before printing"
   (datasheet values), warnings.

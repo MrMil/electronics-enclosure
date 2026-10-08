@@ -24,8 +24,15 @@ makes them; see [`docs/CONVENTIONS.md`](docs/CONVENTIONS.md).
 | [`100W-rj45`](enclosures/100W-rj45/BOM.md) | S-100-5 | as 100W plus an RJ45 bulkhead | base and lid separately |
 | [`100W-masterbox`](enclosures/100W-masterbox/BOM.md) | S-100-5 | C14, ESP32 board, MAX485 board, 3 RJ45, 4 LED exits | base and lid separately, fills the A1 bed |
 
-Each enclosure's `BOM.md` lists its printed parts, bolts and nuts, where supports may be needed,
-and what to check before printing.
+Each enclosure's `BOM.md` shows renders of it (empty base, base with parts, closed) and lists its
+printed parts, bolts and nuts, where supports may be needed, and what to check before printing.
+
+| | Base, no lid | Base with parts | Closed |
+|---|---|---|---|
+| **20W** | ![](enclosures/20W/preview/base.png) | ![](enclosures/20W/preview/interior.png) | ![](enclosures/20W/preview/assembly.png) |
+| **100W** | ![](enclosures/100W/preview/base.png) | ![](enclosures/100W/preview/interior.png) | ![](enclosures/100W/preview/assembly.png) |
+| **100W-rj45** | ![](enclosures/100W-rj45/preview/base.png) | ![](enclosures/100W-rj45/preview/interior.png) | ![](enclosures/100W-rj45/preview/assembly.png) |
+| **100W-masterbox** | ![](enclosures/100W-masterbox/preview/base.png) | ![](enclosures/100W-masterbox/preview/interior.png) | ![](enclosures/100W-masterbox/preview/assembly.png) |
 
 ## Quick start
 
