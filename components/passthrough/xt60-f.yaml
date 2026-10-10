@@ -1,0 +1,20 @@
+# Slot an XT60 female pigtail (connector with its leads already soldered on)
+# passes through, so the bare lead ends go straight into the PSU's screw
+# terminals and the connector hangs outside. Docs: docs/enclosure/wall_openings.md
+kind: passthrough
+name: XT60 female pigtail pass-through
+source: Amass XT60-F datasheet V1.2, customer drawing (https://datasheet.lcsc.com/szlcsc/Changzhou-Amass-Elec-XT60Female_C98734.pdf)
+verified: datasheet
+check: "the XT60 on your pigtail (and its heat-shrink or XT60H sheath) passes the 16.5 x 9.1 mm slot"
+
+# Full outside envelope from the Amass XT60-F drawing: mating face 15.5 x 8.1
+# including its chamfered corners; the grip ribs on the sides and the solder
+# cups (7.2 mm pitch, under heat-shrink on a pigtail) stay inside that
+# outline. The female has no latch. + 0.5 mm per side. Long side runs across
+# the two contacts. Not documented: the XT60H's snap-on sheath — print the
+# coupon if the pigtail has one.
+slot: {w: 16.5, h: 9.1, r: 1.0}
+# Bare lead ends are fed in from outside and screwed into the PSU; inside the
+# wall only wire bends toward the terminals.
+inside_depth: 20
+tie_anchor: true

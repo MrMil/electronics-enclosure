@@ -33,6 +33,7 @@ each, and which of their parts are still unmeasured.
 
 - [`20w.md`](20w.md) — `20W`: S-20-5 PSU facing the front, inlet left, perfboard beside it, two round JST-SM LED holes in the floor.
 - [`100w-masterbox.md`](100w-masterbox.md) — `100W-masterbox`: bed-filling S-100-5 box, ESP32 board + MAX485 board with side clearance, three RJ45s, four back-wall LED exits.
+- [`100w-power-only.md`](100w-power-only.md) — `100W-power-only`: S-100-5 with terminals to the right, C14 in the front wall (sharing it with the lid-lock slots), two XT60 pigtail outputs through the right wall beside the DC terminals; no perfboard.
 - [`100w.md`](100w.md) — `100W`, `100W-rj45` and `100W-leds-on-floor`: S-100-5 PSU, DIKAVS perfboard, C14 inlet, four JST-SM LED exits (back wall, or floor), optional RJ45.
 
 ## Related

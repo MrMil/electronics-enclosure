@@ -1,0 +1,67 @@
+# 100W-power-only — S-100-5 PSU, C14 inlet, two XT60 outputs. No perfboard.
+# Docs: docs/enclosures/100w-power-only.md
+#
+# Frame: interior corner at the origin, x = length (left -> right wall),
+# y = width (front -> back wall), z = up from the floor's top surface.
+# Wall features use (wall, u, z): u is measured along the wall from the end
+# with the smaller x (front/back walls) or smaller y (left/right walls).
+# Anything not set here comes from config/defaults.yaml.
+#
+# Layout (the 20W's, with the S-100-5, turned so the PSU runs along x): PSU
+# with its terminals facing the right wall, inlet in the front wall toward
+# the right. Facing the terminals from the right, AC (L, N, FG) is on the
+# left (front), toward the inlet, and DC (-V, -V, +V, +V) on the right
+# (back). The two XT60 pigtails leave through the right wall straight in
+# front of the DC terminals, so their 10 cm leads reach the screws without
+# extension. Each XT60 takes one -V and one +V.
+#
+# Turned this way so the inlet shares the front wall with the lid-lock slots:
+# only the front and back walls need supports (owner, 2026-10-10).
+
+name: 100W-power-only
+
+box:
+  # x: 3 behind the PSU's far end, 199 PSU, 40 terminal space
+  # y: 60 inlet body + wires, 98 PSU, 10 air gap to the back-wall vents
+  # height: set by the inlet lying down (its flange nuts), as in 100W and 20W
+  inner: [242, 168, 55]
+
+lid:
+  # On the back wall: on the left or right the lugs would push base and lid
+  # past the bed (242 + 4.8 + 12 > 254).
+  lock_lug: {wall: back, u: 70}    # between the left and middle tongues
+
+psu:
+  part: s-100-5
+  at: [3, 60]            # behind the inlet's wire zone; 40 mm terminal space (library value)
+  terminals: right
+
+panel_parts:
+  - part: c14-fuse-switch
+    wall: front
+    u: 206               # toward the right: its wires turn straight into the terminal space
+    z: 24                # lower nut clears the floor, upper nut clears the lid lip
+    rotate: 90           # lying down: 50 mm tall instead of 69
+
+wire_holes:
+  # XT60 outputs: pigtails through the right wall in front of the DC
+  # terminals (y ~109-138), low so the leads run along the floor through
+  # their zip-tie anchors and rise to the screws.
+  - {part: xt60-f, wall: right, u: 118, z: 12}
+  - {part: xt60-f, wall: right, u: 142, z: 12}
+
+vents:
+  lid_over_psu: true
+  walls:
+    - {wall: back, u: [4, 200], z: [6, 38]}      # beside the PSU's DC long side
+    - {wall: front, u: [4, 166], z: [6, 38]}     # beside the inlet, across the free strip to the PSU's AC side
+
+mounting:
+  # Long-wall (front/back) tabs: tabs on the left or right would push the
+  # base past the bed in x.
+  style: tabs
+  tabs:
+    - {wall: front, u: 22}
+    - {wall: front, u: 142}    # clear of the inlet's flange (u 171.5-240.5)
+    - {wall: back, u: 22}
+    - {wall: back, u: 212}

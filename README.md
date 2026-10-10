@@ -24,6 +24,7 @@ makes them; see [`docs/CONVENTIONS.md`](docs/CONVENTIONS.md).
 | [`100W-rj45`](enclosures/100W-rj45/BOM.md) | S-100-5 | as 100W plus an RJ45 bulkhead | base and lid separately |
 | [`100W-leds-on-floor`](enclosures/100W-leds-on-floor/BOM.md) | S-100-5 | as 100W, LED exits in the floor | base and lid separately |
 | [`100W-masterbox`](enclosures/100W-masterbox/BOM.md) | S-100-5 | C14, ESP32 board, MAX485 board, 3 RJ45, 4 LED exits | base and lid separately, fills the A1 bed |
+| [`100W-power-only`](enclosures/100W-power-only/BOM.md) | S-100-5 | C14, 2 XT60 pigtail outputs, no perfboard | base and lid separately |
 
 Each enclosure's `BOM.md` shows renders of it (empty base, base with parts, closed) and lists its
 printed parts, bolts and nuts, where supports may be needed, and what to check before printing.
@@ -35,6 +36,7 @@ printed parts, bolts and nuts, where supports may be needed, and what to check b
 | **100W-rj45** | ![](enclosures/100W-rj45/preview/base.png) | ![](enclosures/100W-rj45/preview/interior.png) | ![](enclosures/100W-rj45/preview/assembly.png) |
 | **100W-leds-on-floor** | ![](enclosures/100W-leds-on-floor/preview/base.png) | ![](enclosures/100W-leds-on-floor/preview/interior.png) | ![](enclosures/100W-leds-on-floor/preview/assembly.png) |
 | **100W-masterbox** | ![](enclosures/100W-masterbox/preview/base.png) | ![](enclosures/100W-masterbox/preview/interior.png) | ![](enclosures/100W-masterbox/preview/assembly.png) |
+| **100W-power-only** | ![](enclosures/100W-power-only/preview/base.png) | ![](enclosures/100W-power-only/preview/interior.png) | ![](enclosures/100W-power-only/preview/assembly.png) |
 
 ## Quick start
 

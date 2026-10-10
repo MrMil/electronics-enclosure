@@ -26,7 +26,8 @@ enclosure houses a power supply.
 - **The owner's requirements are the root constraints.** Every
   enclosure: houses a PSU and keeps it ventilated; holds a perfboard by its holes (2 for the first
   board, 4 for most); has a C13-cord inlet (a C14 module) in a side wall; has wire exits for LED
-  strips; may have an RJ45 bulkhead; has a lid that cannot come undone but opens repeatedly
+  strips (a power-only box, with the PSU's outputs on connectors instead of a board, is the owner's
+  call per enclosure: `100W-power-only`, 2026-10-10); may have an RJ45 bulkhead; has a lid that cannot come undone but opens repeatedly
   without tools, bolts or nuts (hardware is fine for assembly, not for opening); leaves room for
   the wires and cables every part has; has parametric holes for fixing it in place; prints with minimal supports; uses as few non-printed
   parts as possible, one bolt size, and no threaded inserts — bolts through printed walls into

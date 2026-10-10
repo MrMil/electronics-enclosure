@@ -49,6 +49,15 @@ Each gets a wiring zone `inside_depth` deep and, by default, a printed zip-tie a
   Wiring zone 20 mm: the pigtails are fed
   out before the board is screwed down, so afterwards only wire stays inside and needs room to
   bend. (Was 30 mm, sized for the 18.2 mm housing; that made the box too deep for the bed.)
+- **XT60 power outputs are female pigtails through a 16.5 × 9.1 slot** (`xt60-f`, owner
+  2026-10-10, for `100W-power-only`): the bare lead ends go straight into the PSU's screw
+  terminals, so nothing is soldered in the box, and the slot sits near the DC terminals so the
+  pigtail's own leads reach. Slot = the Amass XT60-F drawing's 15.5 × 8.1 mating face (chamfered
+  corners included; side ribs and the solder cups under heat-shrink stay inside it; the female
+  has no latch) + 0.5 mm per side, by the same full-envelope rule as the JST slot, so the
+  connector can pass either way. **Rejected:** a flanged panel-mount XT60 (XT60E-F): the owner
+  has pigtails and would need short wires soldered to its cups. **Unknown:** the XT60H's
+  snap-on sheath size — Amass publishes no drawing; `build.py --coupon xt60-f` tests a real one.
 - **Pass-throughs are a library kind, not inline sizes**, because the same connector will be used
   on every LED enclosure and its size came from a datasheet that should be cited once.
 - **Floor exits take `anchor_at: [dx, dy]`** to move the zip-tie anchor when the default spot
