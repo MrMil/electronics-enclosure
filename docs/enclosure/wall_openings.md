@@ -34,9 +34,22 @@ Each gets a wiring zone `inside_depth` deep and, by default, a printed zip-tie a
   around it). Added after a lying-down C14 put its nuts into the floor and the lip.
 - **C14 orientation is per enclosure.** Upright, its 69 mm flange sets the box height; with
   `rotate: 90` it needs ~50 mm. 100W uses 90 so the box can be PSU-height.
-- **RJ45: measured by the owner.** 23.4 mm thread (cut 24.0), 29 mm nut, 18 mm behind the panel.
+- **RJ45: measured by the owner.** 23.4 mm thread, 29 mm nut, 18 mm behind the panel.
   The cable zone (60 mm) is plug ~22 + boot ~15 + a Cat6A bend. Outside flange not measured;
   assumed ≤ the nut.
+  **Cut 25.0: thread + 0.8 mm per side.** FDM holes print small (perimeters squeeze inward and
+  the `$fn = 48` polygon sits inside the circle), and this hole is a plain circle whose
+  unsupported top sags (see [printability.md](printability.md)). The printed 24.0 hole took the
+  coupler after a light Dremel pass (owner, 2026-10-11), so the hole was only a fraction of a
+  millimetre short and 25.0 is the owner's call. Erring loose costs nothing, because the
+  coupler is clamped by its own nut, not located by the hole; the 29 mm nut bears on 2 mm of
+  wall all round. (26.0 was briefly set and reverted as more than needed.) **Rejected:** compensating for shrink and sag in the shape
+  (circumscribed polygon, a hole stretched upward for sag), since plain extra clearance does
+  the same job here without new geometry. **No test coupon** for this hole (owner, 2026-10-10): its failure modes are
+  shrinkage and sag, and a small fast-printing plate cools and shrinks differently from a
+  full-size wall, so a coupon that fits proves little.
+  **Changed 2026-10-10:** was 24.0 (0.3 per side); the owner found it too small to take the
+  coupler. A thread is rigid, so unlike a latch flap it cannot squeeze through a tight hole.
 - **LED exits are pass-through slots for JST SM 3-pin connectors**, so the owner can solder
   pigtails to the perfboard outside the box and feed them out (owner request). Slot 15.6 × 10.2:
   the full outside envelope of either 3-pin housing from JST's drawings — plug SMP-03V-BC 8 × 7.4

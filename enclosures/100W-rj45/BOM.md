@@ -12,7 +12,7 @@ Parts are drawn as blocks: grey PSU, green perfboards, black connector bodies; l
 
 | File | Print orientation | Size (x × y × z mm) | Supports |
 |---|---|---|---|
-| `stl/100W-rj45-enclosure-base.stl` | floor on the bed | 248.8 × 218.8 × 58.0 | c14-fuse-switch cutout: flat 47.5 mm top (bridge, or support if your slicer wants it); rj45-bulkhead hole: round 24 mm top (overhang; may want support) |
+| `stl/100W-rj45-enclosure-base.stl` | floor on the bed | 248.8 × 218.8 × 58.0 | c14-fuse-switch cutout: flat 47.5 mm top (bridge, or support if your slicer wants it); rj45-bulkhead hole: round 25 mm top (overhang; may want support) |
 | `stl/100W-rj45-enclosure-lid.stl` | top face on the bed, lip up | 252.8 × 202.8 × 9.4 | none |
 
 Bed: base leaves 5.2 mm spare on its tightest axis; lid leaves 1.2 mm spare on its tightest axis (256 x 256 bed, 2 mm margin kept).

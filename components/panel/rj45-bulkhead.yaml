@@ -6,7 +6,10 @@ name: RJ45 Cat6A round bulkhead coupler
 # the panel. The outside flange was not measured; assumed no larger than the nut.
 verified: true
 
-cutout: {shape: round, d: 24.0}      # 23.4 thread + clearance
+# 24.0 (0.3 per side) printed too small (owner, 2026-10-10): FDM holes shrink and
+# the unsupported top of a round wall hole sags. A light Dremel pass made the
+# printed 24.0 fit, so 25.0 (0.8 per side); loose is fine, the nut clamps it.
+cutout: {shape: round, d: 25.0}      # 23.4 thread + clearance
 bolts: []                            # clamped by its own nut
 flange: [30, 30]
 inside: {w: 30, h: 30, depth: 18}    # nut + coupler body
