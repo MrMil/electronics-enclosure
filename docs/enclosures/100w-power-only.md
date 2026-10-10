@@ -42,13 +42,17 @@ Slide-lock lid with the zip-tie lock on the back wall; four mounting tabs on the
   was turned instead.
   **Changed 2026-10-10:** was 168 × 242 with the terminals to the front and the inlet in the
   left wall.
-- **XT60 slots at u = 118 and 142, z = 12, in the right wall**: in front of the DC terminals,
-  which are estimated at y ≈ 109–138 (S-100F block of 7, ~9.5 mm pitch, centred on the PSU at
-  y 60–158; FG ≈ 99.5). Each XT60 takes one −V and one +V terminal (the PSU has two of each), so
-  each terminal carries one output's current. Low, so the leads run along the floor through
+- **XT60 slots at u = 109 and 133, z = 12, in the right wall**: centred on the DC terminals.
+  Per the S-100F drawing (case 902), the screws are 18.1 mm + 9.5 mm × (n − 1) from the AC-side
+  edge, so with the PSU at y 60–158: L 78.1, N 87.6, FG 97.1, −V 106.6 / 116.1, +V
+  125.6 / 135.1. The slot at u = 109 takes −V 106.6 and +V 125.6; the one at 133 takes −V 116.1
+  and +V 135.1. Each lead then runs at most ~17 mm sideways. Each XT60 takes one −V and one +V
+  terminal (the PSU has two of each), so each terminal carries one output's current. Low, so the leads run along the floor through
   their zip-tie anchors (12 mm in) and then rise to the screws.
   **Lead budget:** ~2.4 wall + ~15 to the anchor + ~56 up to a screw (x ≈ 195, z ≈ 46) + ~7
   stripped end ≈ 80–85 mm of the 100, with the connector body against the outside of the wall.
+  **Changed 2026-10-11:** were at u = 118 and 142, from terminal positions estimated as a
+  block centred on the PSU; that put the second slot 7 mm past the last +V screw.
 - **Terminal space 40 mm, the library value.** The lid (242 + 4.8 + 4 finger pull = 250.8)
   still fits the 254 mm usable bed with 40, so nothing forces it smaller; 40 also covers the
   inlet's body (x 182–230) reaching past the terminal end.

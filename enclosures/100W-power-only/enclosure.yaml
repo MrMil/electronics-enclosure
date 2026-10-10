@@ -44,11 +44,13 @@ panel_parts:
     rotate: 90           # lying down: 50 mm tall instead of 69
 
 wire_holes:
-  # XT60 outputs: pigtails through the right wall in front of the DC
-  # terminals (y ~109-138), low so the leads run along the floor through
-  # their zip-tie anchors and rise to the screws.
-  - {part: xt60-f, wall: right, u: 118, z: 12}
-  - {part: xt60-f, wall: right, u: 142, z: 12}
+  # XT60 outputs: pigtails through the right wall, centred on the DC
+  # terminals (-V at y 106.6/116.1, +V at 125.6/135.1, from the S-100F
+  # drawing), low so the leads run along the floor through their zip-tie
+  # anchors and rise to the screws. u=109 takes -V 106.6 and +V 125.6;
+  # u=133 takes -V 116.1 and +V 135.1.
+  - {part: xt60-f, wall: right, u: 109, z: 12}
+  - {part: xt60-f, wall: right, u: 133, z: 12}
 
 vents:
   lid_over_psu: true

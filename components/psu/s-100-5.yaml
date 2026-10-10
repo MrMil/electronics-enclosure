@@ -28,6 +28,10 @@ bolt_len: 6
 # 40 mm fits ferrules, the bend of 14 AWG output wire, and the inlet's wires
 # arriving from the side.
 terminal_clearance: 40
+# Screw centres (S-100F drawing, case 902, read at high zoom 2026-10-11):
+# terminal 1 is 18.1 mm from the AC-side long edge, then a 9.5 mm pitch, so
+# terminal n sits at 18.1 + 9.5 (n - 1) mm (7 -> 75.1); the block's own edge
+# is 12 mm in.
 # Facing the terminal block from outside, AC (L, N, FG) is on the left and DC
 # (-V, -V, +V, +V) on the right (owner's photo 2026-10-07; matches the S-100F
 # pin order). The validator keeps mains parts on the AC side and low-voltage

@@ -60,6 +60,9 @@ substitute a longer bolt.
   the end, wires leave toward the end wall. 40 mm fits ferrules, the bend of 14 AWG output wire,
   and the inlet's wires arriving from the side. It is a `wiring` zone, so the inlet's cable zone
   may meet it but nothing solid may enter it. (Was 25 mm; the owner pointed out wires need room.)
+- **S-100-5 screw-terminal centres are recorded as a comment in its component file** (18.1 mm
+  from the AC-side edge, 9.5 mm pitch, from the S-100F drawing), not as a field: only the
+  layout of connectors placed in front of the terminals uses them, and no code does yet.
 - **`ac_side: left` for the S-100-5**: facing the block, L, N, FG are on the left, −V/+V on the
   right (owner's photo, matching the S-100F pin numbering). It drives the mains/low-voltage side
   rule in [README.md](README.md).
