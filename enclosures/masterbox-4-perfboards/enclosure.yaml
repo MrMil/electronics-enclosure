@@ -1,0 +1,43 @@
+# masterbox-4-perfboards — the 100W-masterbox with four perfboards in two
+# pairs, carrying 7 MAX485 modules and the ESP32. Same box, PSU, C14, LED exits
+# and vents; the boards, the RJ45s and one floor screw move.
+# Docs: docs/enclosures/100w-masterbox.md
+#
+# Frame and wall coordinates as in 100W-masterbox. Lists below replace the
+# parent's wholesale, so the C14 is restated.
+
+extends: 100W-masterbox
+name: masterbox-4-perfboards
+
+perfboards:
+  # Two pairs, each two boards long side to long side 1.68 mm apart (owner):
+  # that continues the 2.54 mm hole pitch across the gap. The MAX485 modules
+  # straddle the gap, so nothing overhangs a pair's outer edges.
+  # Pairs side by side, 1 mm apart, from the mains separation (x 80)
+  # to 1 mm short of the right wall; 1 mm behind the PSU. The ESP32 sits on
+  # the front board of the left pair; its USB-C needs no room inside (owner).
+  # y: 108 PSU + 1 + 55 + 1.68 + 55 = 220.68, leaving 11.3 for a floor screw.
+  - {part: dikavs-half, at: [80, 109], rotate: 0}       # left pair, front (ESP32)
+  - {part: dikavs-half, at: [80, 165.68], rotate: 0}    # left pair, back
+  - {part: dikavs-half, at: [162, 109], rotate: 0}      # right pair, front
+  - {part: dikavs-half, at: [162, 165.68], rotate: 0}   # right pair, back
+
+panel_parts:
+  - part: c14-fuse-switch
+    wall: left           # right behind the PSU's L/N/FG terminals
+    u: 135
+    z: 24
+    rotate: 90
+  # RJ45s in the back wall, pushed toward the right wall (34 mm pitch) so the
+  # left pair's back-left corner stays free (owner). They reach over the back
+  # boards' rear strip: z 25 puts the coupler's 29 mm nut 1 mm above the board,
+  # and 36 mm of cable room (plug and boot) lies over the boards' components.
+  - {part: rj45-bulkhead, wall: back, u: 158, z: 25, override: {cable: {depth: 36}}}
+  - {part: rj45-bulkhead, wall: back, u: 192, z: 25, override: {cable: {depth: 36}}}
+  - {part: rj45-bulkhead, wall: back, u: 226, z: 25, override: {cable: {depth: 36}}}
+
+mounting:
+  # The parent's back-right screw (232, 222) would be under a board; this one
+  # sits in the 11 mm strip behind the boards, left of the RJ45s (a screwdriver
+  # cannot reach under them).
+  floor_holes: [[18, 60], [72, 125], [72, 185], [110, 227.2]]

@@ -8,7 +8,8 @@ Parent: [README.md](README.md)
 ## What it does
 
 1. Keep-outs lie inside the interior and below the lid lip.
-2. Keep-outs do not overlap (except wiring/anchor combinations — see
+2. Keep-outs do not overlap (except wiring/anchor/clearance combinations, and low-voltage wall
+   connectors over a perfboard's clearance or components space — see
    [layout_model.md](layout_model.md)).
 3. Wall through-cuts stay `feature_margin` from wall ends, the floor and the lid lip (the lid-lock
    notches are exempt: they are meant to reach the top); outside-only

@@ -16,12 +16,13 @@ each, and which of their parts are still unmeasured.
   pages, which apply to all of them.
 - **LED exits go in a wall unless the owner asks for the floor** (owner, 2026-10-08). Floor
   exits need the mounting board drilled, so they are the owner's call per enclosure: `20W` and
-  `100W-leds-on-floor` have them; `100W`, `100W-rj45` and `100W-masterbox` keep theirs in the
-  back wall.
+  `100W-leds-on-floor` have them; `100W`, `100W-rj45`, `100W-masterbox` and
+  `masterbox-4-perfboards` keep theirs in the back wall.
   **Changed 2026-10-08:** previously "100W boxes never use the floor", from the owner moving the
   masterbox's exits back into a wall; the owner then asked for a 100W variant with floor exits.
 - **Variants of one layout share a page and use `extends`** (`100W-rj45` and
-  `100W-leds-on-floor` extend `100W`), so their layout reasoning is written once.
+  `100W-leds-on-floor` extend `100W`; `masterbox-4-perfboards` extends `100W-masterbox`), so
+  their layout reasoning is written once.
 - **Enclosure names are the owner's**, after the PSU's power (`100W`), with a `-<variant>`
   suffix for variants (`100W-rj45`). A new revision with incompatible hole positions gets a new
   name rather than silently replacing STLs someone may already have printed.
@@ -32,7 +33,7 @@ each, and which of their parts are still unmeasured.
 ### Pages
 
 - [`20w.md`](20w.md) — `20W`: S-20-5 PSU facing the front, inlet left, perfboard beside it, two round JST-SM LED holes in the floor.
-- [`100w-masterbox.md`](100w-masterbox.md) — `100W-masterbox`: bed-filling S-100-5 box, ESP32 board + MAX485 board with side clearance, three RJ45s, four back-wall LED exits.
+- [`100w-masterbox.md`](100w-masterbox.md) — `100W-masterbox`: bed-filling S-100-5 box, ESP32 board + MAX485 board with side clearance, three RJ45s, four back-wall LED exits; and `masterbox-4-perfboards`: four boards in two pairs (7 MAX485s + ESP32), RJ45s over the back boards.
 - [`100w-power-only.md`](100w-power-only.md) — `100W-power-only`: S-100-5 with terminals to the right, C14 in the front wall (sharing it with the lid-lock slots), two XT60 pigtail outputs through the right wall beside the DC terminals; no perfboard.
 - [`100w.md`](100w.md) — `100W`, `100W-rj45` and `100W-leds-on-floor`: S-100-5 PSU, DIKAVS perfboard, C14 inlet, four JST-SM LED exits (back wall, or floor), optional RJ45.
 

@@ -1,10 +1,11 @@
-# 100W-masterbox
+# 100W-masterbox and masterbox-4-perfboards
 
 Path: [docs](../README.md) › [enclosures](README.md) › **100w-masterbox**
 Parent: [README.md](README.md)
-**Code:** `enclosures/100W-masterbox/enclosure.yaml`
+**Code:** `enclosures/100W-masterbox/enclosure.yaml`, `enclosures/masterbox-4-perfboards/enclosure.yaml`
 **Covers:** the bed-filling S-100-5 enclosure for an ESP32 driving 6 MAX485 RS485 transmitters,
-two per RJ45 output, with three RJ45 outputs and four LED exits.
+two per RJ45 output, with three RJ45 outputs and four LED exits; and its variant
+`masterbox-4-perfboards` (four boards, 7 MAX485s), [below](#masterbox-4-perfboards).
 
 ## What it does
 
@@ -58,6 +59,57 @@ Slide-lock lid, zip-tie lug on the front wall, four countersunk floor screws.
   needs a shorter `lid.tab_pull`, less support room, or a bigger printer.
 - Base and lid do not fit one plate; print them separately.
 - Four JST-SM exits carry at most 12 A (3 A per contact) of the PSU's 20 A.
+
+## masterbox-4-perfboards
+
+`extends: 100W-masterbox`: the same box, PSU, C14, LED exits, vents and lid. Four DIKAVS boards
+carry 7 MAX485 modules and the ESP32, as two pairs side by side behind the PSU: each pair is two
+boards long side to long side, 1.68 mm apart, at x 80–161 and 162–243, y 109–220.68. The ESP32 is
+on the left pair's front board. The three RJ45s sit at u 158 / 192 / 226, z 25, over the back
+boards' rear strip.
+
+### Decisions
+
+- **Four boards in two pairs, 1.68 mm apart long side to long side** (owner, 2026-10-25, with a
+  photo of the boards laid out in a printed 100W-masterbox). The MAX485 modules straddle the gap
+  between a pair's boards. 1.68 mm is the gap that continues the boards' 2.54 mm hole pitch
+  across from one board to the other (owner), so a module's header pins land in holes on both.
+  Do not round it: any other gap puts one row of pins off-grid. Because the modules sit on the pair, **no clearance strips**: nothing overhangs a
+  pair's outer edges. The ESP32 needs **no room for its USB-C cable** inside (owner).
+- **A new enclosure, not a change to 100W-masterbox** (owner named it): its board, RJ45 and floor
+  screw positions are incompatible with the printed 100W-masterbox. The name breaks the
+  `100W-<variant>` pattern because the owner chose it.
+- **Pairs side by side, not three in a row plus one.** The low-voltage area behind the PSU is
+  about 164 × 121 mm: x from 80 (20 mm `lv_gap` from the C14's wire zone) to the right wall, y
+  from the PSU to the back wall. Three boards in a row need 168.4 mm, more than either direction,
+  at any box height. Two pairs (162 × 111.68) are the only arrangement that fits.
+- **55 mm height kept; the RJ45s reach over the boards instead.** A 76 mm tall box with the RJ45s
+  above the boards passed validation, but the owner declined it (2026-10-25). At 55 mm the
+  couplers stand over the back boards' rear strip. z 25 lifts the 30 mm body box (the 29 mm nut)
+  to 0.5 mm above the board top (z 9.5); the 36 mm cable room (plug and boot) lies over the
+  boards' components. The validator allows this only for low-voltage connectors, and never into
+  the board itself ([perfboard_mount.md](../enclosure/perfboard_mount.md)).
+- **RJ45s pushed toward the right wall, at a 34 mm pitch** (owner: keep the left pair's back-left
+  corner usable). Rightmost u 226 keeps the body 3 mm from the right wall. The 34 mm pitch leaves
+  4 mm between the 30 mm flanges, enough to turn each nut by hand. The leftmost coupler covers x
+  143–173, leaving x 80–143 of the left pair's back board free. All flanges are clear of
+  the back face's centreline (x 122), so the box still fits the shelf-tower window.
+- **Three RJ45s for 7 MAX485s** (owner): one RJ45 carries three. Which modules go to which RJ45
+  sets no dimension.
+- **1 mm gaps** between the PSU and the front boards, between the pairs, and to the right wall:
+  the band is 164 mm for 162 mm of boards. Pushing the front boards forward to y 109 (the parent
+  used 111) leaves 11.3 mm behind the back boards for a floor screw.
+- **Back-right floor screw moved from (232, 222) to (110, 227.2).** The old spot is under a board.
+  No spot right of the RJ45s is reachable with a screwdriver, and the PSU and boards fill the
+  rest of the right half. So it sits behind the back boards, left of the couplers, with the
+  minimum margins (to the board edge 2 mm; the 9 mm countersink ends 0.3 mm from the wall).
+
+### Gotchas
+
+- The boards fill their band to the millimetre; any board-position change has to move the
+  RJ45s or the floor screw too.
+- Low-voltage wires from the far-end route reach the right pair's front edge directly (no free
+  strip); they run over the boards' components space.
 
 ## Related
 

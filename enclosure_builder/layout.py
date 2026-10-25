@@ -25,8 +25,9 @@ class Box3:
     y1: float
     z1: float
     label: str
-    kind: str = "solid"   # solid | wiring | anchor | clearance
-    connector: bool = False   # low-voltage wall connector body (may sit in a perfboard clearance)
+    kind: str = "solid"   # solid | wiring | anchor | clearance | components
+    connector: bool = False   # low-voltage wall connector body or cable (may sit in a perfboard
+                              # clearance or above a perfboard, in its components space)
 
 
 @dataclass
@@ -381,8 +382,13 @@ def place_perfboards(m: Model) -> None:
         n = len(spec["holes"])
         m.bom += [(n, f"M3 x {bolt} socket head", f"{label}, from the top"),
                   (n, "M3 hex nut", f"{label}, in pockets under the floor")]
-        top = standoff + t + spec.get("component_h", 25)
-        m.keepouts.append(Box3(bx, by, 0, bx + w, by + d, top, label))
+        # The board (with its standoffs) is solid; the parts and wires above it are a
+        # `components` keep-out that a low-voltage wall connector may reach over
+        # (see perfboard_mount.md).
+        board_top = standoff + t
+        top = board_top + spec.get("component_h", 25)
+        m.keepouts.append(Box3(bx, by, 0, bx + w, by + d, board_top, label))
+        m.keepouts.append(Box3(bx, by, board_top, bx + w, by + d, top, f"{label} components", "components"))
         m.sided = getattr(m, "sided", []) + [(label, (bx, by, bx + w, by + d), False)]
         # `clearance: {left|right|front|back: mm}` — free room beside the board's
         # edges for its side connectors and their cables (see perfboard_mount.md).
@@ -494,6 +500,7 @@ def place_panel_parts(m: Model) -> None:
             cw, ch = (cable["h"], cable["w"]) if rot == 90 else (cable["w"], cable["h"])
             ck = m.wall_box(wall, u - cw / 2, u + cw / 2, max(0, z - ch / 2), min(lip_bottom(m), z + ch / 2),
                             cable["depth"], label + " cable", start=body["depth"])
+            ck.connector = not spec.get("mains")
             m.wiring(ck)
             if spec.get("mains"):
                 m.mains_boxes.append((ck.x0, ck.y0, ck.x1, ck.y1))

@@ -88,8 +88,10 @@ def validate(m: Model) -> None:
                 continue
             # A perfboard's clearance is room for its side connectors and their
             # cables, so a low-voltage wall connector body may stand in it; any
-            # other solid (PSU, boards, mains parts) may not.
-            if "clearance" in kinds and (a.connector or b.connector):
+            # other solid (PSU, boards, mains parts) may not. The same connector
+            # (body and cable) may also reach over a board's components space,
+            # never into the board itself — that strip of the board is given up.
+            if kinds & {"clearance", "components"} and (a.connector or b.connector):
                 continue
             if _boxes_overlap(a, b):
                 m.errors.append(f"{a.label} overlaps {b.label}")

@@ -43,6 +43,15 @@ standoff.
   the room is for); the PSU, other boards and mains parts may not. Added for the 100W-masterbox:
   3 cm on both long sides of the MAX485 board (modules overhang) and 3 cm on one long side of the
   ESP32 board (USB-C cable), owner 2026-10-08. Shown light blue in previews.
+- **The board and the space above it are separate keep-outs.** The board with its standoffs is
+  `solid` (floor to board top); the `component_h` above it is `components`, solid to everything
+  except a low-voltage wall connector's body and cable (keep-outs flagged `connector`), which may
+  reach over the board's edge. **Why:** in `masterbox-4-perfboards` the owner accepts RJ45
+  couplers standing over the back boards' rear strip (2026-10-25) — the coupler's nut clears the
+  board, and that strip of the board is simply not used for parts. The board itself stays solid,
+  so a connector can never be placed into it; mains parts and the PSU still may not reach over a
+  board. The owner names which board area must stay free; the validator does not know which
+  holes are in use.
 - **`rotate: 0 | 90` only.** Boards are laid parallel to the walls; arbitrary angles would break
   the axis-aligned keep-out check.
 

@@ -13,7 +13,7 @@ them. The individual `place_*` functions are documented on their feature pages u
 lid lock, PSU, perfboards, panel parts, wire exits, mounting, vents. Each appends to:
 
 - `prims` — named lists that become SCAD globals (`PADS`, `WALL_RECTS`, `LID_TONGUES`, …);
-- `keepouts` — `Box3` volumes in interior coordinates, kind `solid`, `wiring` or `anchor`;
+- `keepouts` — `Box3` volumes in interior coordinates, kind `solid`, `wiring`, `anchor`, `clearance` or `components`;
 - `wall_feats` — `WallFeat` rectangles in a wall's (u, z) plane, `through` or outside-only,
   with a `group` so a part's own features are not checked against each other;
 - `bom`, `checks` (datasheet values to confirm), `warnings`, `errors`.
@@ -32,9 +32,11 @@ part once however many times it is placed.
 - **Vents are placed last** because they fill whatever wall area is left (see
   [../enclosure/ventilation.md](../enclosure/ventilation.md)).
 - **`clearance` keep-outs** (perfboard side room) may overlap wiring, anchors and other
-  clearance, plus solids flagged `connector` (non-mains wall connector bodies); see
-  [../enclosure/perfboard_mount.md](../enclosure/perfboard_mount.md).
-- **Three keep-out kinds.** `solid` (PSU body, perfboard + parts, panel bodies) may not overlap
+  clearance, plus keep-outs flagged `connector` (non-mains wall connector bodies and cable
+  zones); see [../enclosure/perfboard_mount.md](../enclosure/perfboard_mount.md).
+- **`components` keep-outs** (the space above a perfboard, for its parts and wires) are solid to
+  everything except `connector` keep-outs, which may reach over a board's edge; same page.
+- **Three basic keep-out kinds.** `solid` (PSU body, perfboard and standoffs, panel bodies) may not overlap
   anything; `wiring` (PSU terminals, panel cables, wire exits) may overlap other wiring; `anchor` (zip-tie anchors) may
   sit in wiring space because that is where wires are. Without the distinction a tie anchor next
   to the PSU terminals would be a false collision.
